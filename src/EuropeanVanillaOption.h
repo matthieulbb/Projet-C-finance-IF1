@@ -13,6 +13,7 @@ class EuropeanVanillaOption : public Option
         double getStrike();
     private:
         double _strike;
+        friend class BlackScholesPricer;
     public:
         EuropeanVanillaOption(double expiry,double strike);
         virtual optionType GetOptionType() = 0;

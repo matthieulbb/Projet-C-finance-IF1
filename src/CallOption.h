@@ -3,8 +3,8 @@
 
 class CallOption : public EuropeanVanillaOption
 {
-    public:
     
+    public:
         using EuropeanVanillaOption::EuropeanVanillaOption;
         double payoff(double price) override;
         optionType GetOptionType() override;
