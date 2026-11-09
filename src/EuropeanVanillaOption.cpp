@@ -9,3 +9,8 @@ EuropeanVanillaOption::EuropeanVanillaOption(double expiry, double strike) : Opt
         throw std::invalid_argument("Les arguments (expiry et strike) doivent être positifs ou nuls");
     }
 }
+
+double EuropeanVanillaOption::getStrike()
+{
+    return _strike;
+}

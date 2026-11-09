@@ -9,6 +9,8 @@ enum class optionType
 
 class EuropeanVanillaOption : public Option
 {
+    protected:
+        double getStrike();
     private:
         double _strike;
     public:
