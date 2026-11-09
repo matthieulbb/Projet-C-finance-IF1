@@ -1,0 +1,29 @@
+# Sujet et documents de cours (restent en local, jamais publiés)
+docs/
+
+# Dossiers de compilation
+build/
+cmake-build-*/
+out/
+
+# Binaires et objets
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.lib
+
+# Zip de rendu (généré par le script)
+*.zip
+
+# IDE / éditeurs
+.vscode/
+.idea/
+.vs/
+*.xcodeproj/
+*.swp
+
+# Systèmes
+.DS_Store
+Thumbs.db
