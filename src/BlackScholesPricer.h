@@ -10,4 +10,6 @@ class BlackScholesPricer
         double _volatility;
     public :
         BlackScholesPricer(EuropeanVanillaOption* option, double asset_price,double interest_rate, double volatility);
+        double operator()();
+        double delta();
 };
