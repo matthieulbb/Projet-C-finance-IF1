@@ -23,6 +23,13 @@ CRRPricer::CRRPricer(Option* option,
         throw std::invalid_argument("CRRPricer: option must not be null.");
     }
 
+    // La Partie III demande d'interdire les options asiatiques
+    // dans le pricer CRR.
+    if (_option->isAsianOption())
+    {
+        throw std::invalid_argument("CRRPricer: Asian options are not supported by this CRR pricer.");
+    }
+
     if (_depth < 0)
     {
         throw std::invalid_argument("CRRPricer: depth must be nonnegative.");

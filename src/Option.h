@@ -1,30 +1,41 @@
 #ifndef OPTION_H
 #define OPTION_H
 
+#include <vector>
+
 // Classe abstraite de base pour toutes les options.
-// Elle definit notamment la date d'expiration et la fonction de payoff.
+// Elle contient :
+// - la date d'expiration ;
+// - le payoff classique h(z) ;
+// - le payoff sur un chemin complet ;
+// - une methode virtuelle pour identifier les options asiatiques.
 class Option
 {
 protected:
-    // Conformement a la consigne du TD, _expiry est protected
-    // afin de permettre l'acces aux classes derivees.
+    // Conformement a la consigne du TD, _expiry est protected.
     double _expiry;
 
 public:
-    // Constructeur de la classe Option.
-    // Il initialise la date d'expiration.
+    // Constructeur : initialise la date d'expiration.
     explicit Option(double expiry);
 
-    // Destructeur virtuel pour assurer une destruction correcte
-    // des objets derives via un pointeur de type Option*.
+    // Destructeur virtuel pour la destruction polymorphique.
     virtual ~Option() = default;
 
-    // Accesseur en lecture seule sur la date d'expiration.
+    // Accesseur sur la date d'expiration.
     double getExpiry() const;
 
-    // Fonction de payoff h(z).
-    // Elle est virtuelle pure : les classes derivees devront l'implementer.
+    // Payoff classique h(z).
     virtual double payoff(double z) const = 0;
+
+    // Payoff dependant du chemin.
+    // La version non surchargee renvoie h(S_tm), c'est-a-dire
+    // le payoff sur la derniere valeur du chemin.
+    virtual double payoffPath(const std::vector<double>& path) const;
+
+    // Renvoie false pour une option non asiatique.
+    // Cette methode est surchargee dans AsianOption.
+    virtual bool isAsianOption() const;
 };
 
 #endif // OPTION_H
